@@ -5,7 +5,7 @@ export class Payslip extends Component {
   showPayslips = payslips => {
     const details = [];
 
-    if (this.props.payslips) {
+    if (!isEmpty(this.props.payslips)) {
       details.push(
         <div id="result" key="header">
           <hr className="text-center mt-3" />
