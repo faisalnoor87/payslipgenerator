@@ -29,8 +29,8 @@ export class Uploader extends Component {
           <div className="col-md-8 m-auto">
             <h3 className="text-center mt-2">Or upload a file:</h3>
             <small className="d-block pb-3 text-center">
-              Data format for each data entry line: first name, last name,
-              annual salary, super rate (%), payment period
+              Data format for each data entry line: first name,last name,annual
+              salary,super rate,payment period
             </small>
             <form
               className="form-group"

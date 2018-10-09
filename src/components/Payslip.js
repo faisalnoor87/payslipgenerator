@@ -3,9 +3,8 @@ import { isEmpty } from '../util';
 
 export class Payslip extends Component {
   showPayslips = payslips => {
-    const details = [];
-
     if (!isEmpty(payslips)) {
+      const details = [];
       details.push(
         <div id="result" key="header">
           <hr className="text-center mt-3" />
@@ -31,9 +30,8 @@ export class Payslip extends Component {
           </div>
         );
       });
+      return details;
     }
-
-    return details;
   };
 
   render() {
