@@ -5,14 +5,14 @@ export class Payslip extends Component {
   showPayslips = payslips => {
     const details = [];
 
-    if (!isEmpty(this.props.payslips)) {
+    if (!isEmpty(payslips)) {
       details.push(
         <div id="result" key="header">
           <hr className="text-center mt-3" />
           <h3 className="text-center mt-2 mb-3">Result:</h3>
         </div>
       );
-      this.props.payslips.forEach((payslip, index) => {
+      payslips.forEach((payslip, index) => {
         details.push(
           <div key={index} className="card mb-5">
             <div className="card-header">
