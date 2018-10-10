@@ -10,8 +10,14 @@ const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 describe('generate payslip(s) actions', () => {
+  let store;
   beforeEach(function() {
     moxios.install();
+    // configure Mock store
+    store = mockStore({
+      payslips: [],
+      loading: false
+    });
   });
 
   afterEach(function() {
@@ -36,12 +42,6 @@ describe('generate payslip(s) actions', () => {
       }
     ];
 
-    // configure Mock store
-    const store = mockStore({
-      payslips: [],
-      loading: false
-    });
-
     return store.dispatch(actions.generateOne(employee)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -64,12 +64,6 @@ describe('generate payslip(s) actions', () => {
         payload: apiResponse
       }
     ];
-
-    // configure Mock store
-    const store = mockStore({
-      payslips: [],
-      loading: false
-    });
 
     return store.dispatch(actions.generateFile(file)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);

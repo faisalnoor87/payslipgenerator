@@ -8,11 +8,17 @@ export const employee = {
 
 export const file = [employee];
 
-export const apiResponse =
-  '{name:David Rudd,payPeriod:01 March – 31 March,grossIncome:5004,incomeTax:922,netIncome:4082,superAmount:450}';
+export const apiResponse = {
+  name: 'David Rudd',
+  payPeriod: '01 March – 31 March',
+  grossIncome: 5004,
+  incomeTax: 922,
+  netIncome: 4082,
+  superAmount: 450
+};
 
 export const errorRes = {
-  timestamp: 'when it happened',
+  timestamp: 'When it happened',
   status: 0,
   error: 'Some Error',
   message: 'Required request body is missing or something',
