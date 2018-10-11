@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import moxios from 'moxios';
 import * as types from '../actiontypes';
 import * as actions from './';
-import { employee, file, apiResponse } from '../util/mockData';
+import { employee, file, apiResponse, errorRes } from '../util/mockData';
 
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
@@ -67,6 +67,40 @@ describe('generate payslip(s) actions', () => {
 
     return store.dispatch(actions.generateFile(file)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  describe('handle GET_ERRORS', () => {
+    let expectedActions;
+    beforeEach(function() {
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        request.respondWith({
+          status: 400,
+          response: errorRes
+        });
+      });
+
+      expectedActions = [
+        { type: types.LOADING },
+        { type: types.CLEAR_ERRORS },
+        {
+          type: types.GET_ERRORS,
+          error: errorRes
+        }
+      ];
+    });
+
+    it('retrieve errors after an unsuccessful generateOne request', () => {
+      return store.dispatch(actions.generateOne(employee)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
+    });
+
+    it('retrieve errors after an unsuccessful generateFile request', () => {
+      return store.dispatch(actions.generateFile(file)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
     });
   });
 });
