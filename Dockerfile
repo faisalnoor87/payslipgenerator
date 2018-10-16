@@ -13,8 +13,6 @@ COPY package.json /deploy/application/payslipgenerator/package.json
 RUN npm install
 COPY . /deploy/application/payslipgenerator
 
-RUN npm test
-
 RUN npm run build
 
 FROM nginx:alpine
