@@ -2,7 +2,7 @@
 FROM node:alpine as build
 
 # set working directory
-RUN mkdir - p /deploy/application/payslipgenerator
+RUN mkdir -p /deploy/application/payslipgenerator
 WORKDIR /deploy/application/payslipgenerator
 
 # add `/deploy/application/payslipgenerator/node_modules/.bin` to $PATH
