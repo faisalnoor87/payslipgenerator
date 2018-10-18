@@ -3,5 +3,4 @@ install:
   - npm install
   - npm install -g codecov
 script:
-  - react-scripts test --env=jsdom --coverage
-  - codecov
+  - npm test
