@@ -1,7 +1,8 @@
 import axios from 'axios';
 import * as types from '../actiontypes';
 
-const API_BASE_URL = 'http://localhost:8088';
+// const API_BASE_URL = 'http://localhost:8088';
+const API_BASE_URL = 'https://sp-payslip.herokuapp.com';
 
 const loading = () => {
   return {
