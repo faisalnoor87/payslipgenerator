@@ -11,7 +11,6 @@ ENV PATH /deploy/application/payslipgenerator/node_modules/.bin:$PATH
 # install and cache app dependencies
 COPY package.json /deploy/application/payslipgenerator/package.json
 RUN npm install
-RUN npm install -g codecov
 COPY . /deploy/application/payslipgenerator
 
 CMD ["npm","start"]

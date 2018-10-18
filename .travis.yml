@@ -5,4 +5,16 @@ services:
 before_install:
   - docker build -t ptviet/payslip -f Dockerfile.dev .
 script:
-  - docker run ptviet/payslip npm test -- --coverage && codecov
+  - docker run ptviet/payslip npm test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'payslip'
+  env: 'Payslip-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-160813253081'
+  bucket_path: 'payslip'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY'
