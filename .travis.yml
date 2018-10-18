@@ -1,15 +1,10 @@
 language: node_js
-# install:
-#   - npm install
-#   - npm install -g codecov
-# script:
-#   - npm test
 sudo: required
 services:
   - docker
-
 before_install:
   - docker build -t ptviet/payslip -f Dockerfile.dev .
-
+install:
+  - npm install -g codecov
 script:
-  - docker run ptviet/payslip npm test -- --coverage
+  - docker run ptviet/payslip npm test -- --coverage && codecov
